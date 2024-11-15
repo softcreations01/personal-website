@@ -3,6 +3,10 @@ pipeline {
     tools {
         nodejs "NodeJS"
     }
+    environment {
+        DISABLE_AUTH = 'true'
+        DB_ENGINE = 'sqlite'
+    }
     stages {
         stage('Checkout') {
             steps {
@@ -27,6 +31,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 // Deployment steps go here
+                sh 'echo "Deploying application..."'
             }
         }
     }
